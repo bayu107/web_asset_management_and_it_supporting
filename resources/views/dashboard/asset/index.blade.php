@@ -14,7 +14,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     
-    {{-- <a href="{{ route('asset.create') }}" class="btn btn-primary mb-3">Tambah Asset</a> --}}
+    <a href="{{ route('asset.create') }}" class="btn btn-primary mb-3">Tambah Asset</a>
     
     <table class="table">
         <thead>

@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>ID</th>
+                {{-- <th>ID</th> --}}
                 <th>Category Name</th>
                 <th>Actions</th>
             </tr>
@@ -29,16 +29,16 @@
             @foreach ($m_category_assets as $index => $m_category_asset)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $m_category_asset->id }}</td>
+                    {{-- <td>{{ $m_category_asset->id }}</td> --}}
                     <td>{{ $m_category_asset->category_name_asset }}</td>
                     <td>
                         <a href="{{ route('m_category_assets.show', $m_category_asset->id) }}" class="btn btn-sm btn-info">View</a>
-                        <a href="{{ route('m_category_assets.edit', $m_category_asset->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        {{-- <a href="{{ route('m_category_assets.edit', $m_category_asset->id) }}" class="btn btn-sm btn-primary">Edit</a>
                         <form action="{{ route('m_category_assets.destroy', $m_category_asset->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             @endforeach

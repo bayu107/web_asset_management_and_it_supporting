@@ -17,9 +17,9 @@
     </table>
     
     <a href="{{ route('m_category_assets.edit', $m_category_asset->id) }}" class="btn btn-primary">Edit</a>
-    <form action="{{ route('m_category_assets.destroy', $m_category_asset->id) }}" method="POST" class="d-inline">
+    {{-- <form action="{{ route('m_category_assets.destroy', $m_category_asset->id) }}" method="POST" class="d-inline">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
+    </form> --}}
 @endsection

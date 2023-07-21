@@ -70,6 +70,9 @@ Route::get('/usedassets/{id}/edit', [UsedAssetController::class, 'edit'])->name(
 Route::put('/usedassets/{id}', [UsedAssetController::class, 'update'])->name('usedasset.update');
 Route::delete('/usedassets/{id}', [UsedAssetController::class, 'destroy'])->name('usedasset.destroy');
 
+Route::put('/usedasset/{id}/return', [UsedAssetController::class, 'returnAsset'])->name('usedasset.return');
+
+
 Route::get('/reports', [ReportTroubleController::class, 'index'])->name('report.index');
 Route::get('/reports/create', [ReportTroubleController::class, 'create'])->name('report.create');
 Route::post('/reports', [ReportTroubleController::class, 'store'])->name('report.store');

@@ -16,14 +16,25 @@ class UsedAssetController extends Controller
         ]);
     }
 
+    // public function store(Request $request)
+    // {
+    //     $usedAsset = UsedAsset::create($request->all());
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $usedAsset
+    //     ], 201);
+    // }
+
     public function store(Request $request)
-    {
-        $usedAsset = UsedAsset::create($request->all());
-        return response()->json([
-            'success' => true,
-            'data' => $usedAsset
-        ], 201);
-    }
+{
+
+    $usedAsset = UsedAsset::create($request->all());
+
+    return response()->json([
+        'success' => true,
+        'data' => $usedAsset
+    ], 201);
+}
 
     public function show($id)
     {

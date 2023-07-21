@@ -22,14 +22,20 @@
                                 <label class="custom-control-label" for="is_acc"></label>
                             </div>
                         </div> 
-
+                        
                         <div class="form-group">
                             <label for="acc_by">Acc By:</label>
                             <input type="text" class="form-control" id="acc_by" name="acc_by" value="{{ $usedAsset->acc_by }}">
                         </div>
-
+                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <form method="POST" action="{{ route('usedasset.return', $usedAsset->id) }}">
+                        @method('PUT')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Pengembalian Asset</button>
+                    </form>
+                    
                 </div>
             </div>
         </div>

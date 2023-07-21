@@ -1,11 +1,11 @@
 <!-- resources/views/m_category_reports/create.blade.php -->
 
-@extends('layouts.app')
+@extends('dashboard')
+
+@section('title', 'Create Category Report')
 
 @section('content')
-<div class="container">
-    <h1>Create MCategoryReport</h1>
-    
+<div class="container">    
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

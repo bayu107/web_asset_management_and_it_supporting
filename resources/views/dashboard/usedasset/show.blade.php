@@ -25,11 +25,11 @@
             </tr>
             <tr>
                 <th>Tanggal Mulai:</th>
-                <td>{{ $usedAsset->start_date }}</td>
+                <td>{{ $usedAsset->use_start_date }}</td>
             </tr>
             <tr>
                 <th>Tanggal Selesai:</th>
-                <td>{{ $usedAsset->end_date }}</td>
+                <td>{{ $usedAsset->return_date }}</td>
             </tr>
         </table>
 
@@ -43,8 +43,8 @@
                     <th>Detail Aset</th>
                     <th>Kategori Aset</th>
                     <th>Digunakan Oleh</th>
-                    <th>Disewakan Oleh</th>
-                    <th>Tersedia</th>
+                    {{-- <th>Disewakan Oleh</th> --}}
+                    {{-- <th>Tersedia</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -60,14 +60,14 @@
                             Tidak Ada
                         @endif
                     </td>
-                    <td>
+                    {{-- <td>
                         @if ($usedAsset->asset->rentBy)
                             {{ $usedAsset->asset->rentBy->user_name }}
                         @else
                             Not Rented
                         @endif
-                    </td>
-                    <td>{{ $usedAsset->asset->is_available ? 'Ya' : 'Tidak' }}</td>
+                    </td> --}}
+                    {{-- <td>{{ $usedAsset->asset->is_available ? 'Ya' : 'Tidak' }}</td> --}}
                 </tr>
             </tbody>
         </table>

@@ -26,7 +26,7 @@
                 <th>Pengguna</th>
                 <th>Disetujui Oleh</th>
                 <th>Tanggal Mulai</th>
-                {{-- <th>Tanggal Selesai</th> --}}
+                <th>Tanggal Pengembalian</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -36,11 +36,11 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $usedAsset->id }}</td>
                     <td>{{ $usedAsset->asset->asset_name }}</td>
-                    <td>{{ $usedAsset->asset->category->category_name }}</td>
+                    <td>{{ $usedAsset->asset->category->category_name_asset}}</td>
                     <td>{{ $usedAsset->usedBy ? $usedAsset->usedBy->user_name : 'Tidak Ada' }}</td>
                     <td>{{ $usedAsset->accBy ? $usedAsset->accBy->user_name : 'Tidak Ada' }}</td>
                     <td>{{ $usedAsset->use_start_date }}</td>
-                    {{-- <td>{{ $usedAsset->end_date }}</td> --}}
+                    <td>{{ $usedAsset->return_date }}</td>
                     <td>
                         <a href="{{ route('usedasset.show', $usedAsset->id) }}" class="btn btn-info">Lihat</a>
                         <a href="{{ route('usedasset.edit', $usedAsset->id) }}" class="btn btn-primary">Edit</a>

@@ -28,7 +28,10 @@
                         </div>
                         <div class="form-group">
                             <label for="user_level">Level</label>
-                            <input type="number" class="form-control" id="user_level" name="user_level" value="{{ $user->user_level }}" required>
+                            <select class="form-control" id="user_level" name="user_level" required>
+                                <option value="1">Pengguna</option>
+                                <option value="2">Admin</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Update User</button>
                     </form>

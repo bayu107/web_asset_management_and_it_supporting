@@ -38,11 +38,11 @@
                             <td>
                                 <a href="{{ route('dashboard.users.show', $user) }}" class="btn btn-primary">View</a>
                                 <a href="{{ route('dashboard.users.edit', $user) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('dashboard.users.destroy', $user) }}" method="POST" style="display: inline-block;">
+                                {{-- <form action="{{ route('dashboard.users.destroy', $user) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach

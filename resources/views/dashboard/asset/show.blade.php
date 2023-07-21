@@ -1,9 +1,10 @@
 <!-- resources/views/asset/show.blade.php -->
 
-@extends('layouts.app')
+@extends('dashboard')
+
+@section('title', 'Detail Asset')
 
 @section('content')
-    <h1>Detail Asset</h1>
     
     <table class="table">
         <tr>

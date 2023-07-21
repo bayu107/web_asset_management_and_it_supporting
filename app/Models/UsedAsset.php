@@ -17,11 +17,25 @@ class UsedAsset extends Model
         'used_by',
         'acc_by',
         'use_start_date',
+        'return_date'
     ];
 
     protected $casts = [
         'is_acc' => 'boolean',
     ];
+
+    public function updateTimestamps($exists = false)
+    {
+        if ($this->timestamps && ! $exists) {
+            $time = $this->freshTimestamp();
+
+            $this->setAttribute('return_date', $time);
+            $this->setAttribute('updated_at', null); 
+        }
+
+        return $this;
+    }
+
 
     public function usedBy()
     {

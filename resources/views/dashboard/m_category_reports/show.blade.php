@@ -1,9 +1,9 @@
 <!-- resources/views/m_category_reports/show.blade.php -->
 
-@extends('layouts.app')
+@extends('dashboard')
+@section('title', 'Category Report Details')
 
 @section('content')
-    <h1>MCategoryReport Details</h1>
     
     <table class="table">
         <tr>
@@ -17,9 +17,9 @@
     </table>
     
     <a href="{{ route('m_category_reports.edit', $m_category_report->id) }}" class="btn btn-primary">Edit</a>
-    <form action="{{ route('m_category_reports.destroy', $m_category_report->id) }}" method="POST" class="d-inline">
+    {{-- <form action="{{ route('m_category_reports.destroy', $m_category_report->id) }}" method="POST" class="d-inline">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-    </form>
+    </form> --}}
 @endsection

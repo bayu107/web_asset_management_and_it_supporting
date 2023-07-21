@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Asset;
 use App\Models\UsedAsset;
@@ -133,36 +134,36 @@ class UsedAssetController extends Controller
     // }
 
     public function update(Request $request, $id)
-{
-    $usedAsset = UsedAsset::find($id);
+    {
+        $usedAsset = UsedAsset::find($id);
 
-    if ($usedAsset) {
-        $usedAsset->update($request->all());
+        if ($usedAsset) {
+            $usedAsset->update($request->all());
 
-        // Cek jika is_acc telah diakses dan sudah ke acc
-        if ($usedAsset->is_acc && $usedAsset->acc_by) {
-            // Ubah status is_available menjadi 0 pada m_asset
-            $mAsset = Asset::find($usedAsset->asset_id);
-            if ($mAsset) {
-                $mAsset->is_available = 1;
-                $mAsset->save();
+            // Cek jika is_acc telah diakses dan sudah ke acc
+            if ($usedAsset->is_acc && $usedAsset->acc_by) {
+                // Ubah status is_available menjadi 0 pada m_asset
+                $mAsset = Asset::find($usedAsset->asset_id);
+                if ($mAsset) {
+                    $mAsset->is_available = 1;
+                    $mAsset->save();
+                }
+            } else {
+                // Ubah status is_available menjadi 1 pada m_asset
+                $mAsset = Asset::find($usedAsset->asset_id);
+                if ($mAsset) {
+                    $mAsset->is_available = 0;
+                    $mAsset->save();
+                }
             }
+
+            return redirect()->route('usedasset.index')
+                ->with('success', 'Used asset berhasil diperbarui.');
         } else {
-            // Ubah status is_available menjadi 1 pada m_asset
-            $mAsset = Asset::find($usedAsset->asset_id);
-            if ($mAsset) {
-                $mAsset->is_available = 0;
-                $mAsset->save();
-            }
+            return redirect()->route('usedasset.index')
+                ->with('error', 'Used asset tidak ditemukan.');
         }
-
-        return redirect()->route('usedasset.index')
-            ->with('success', 'Used asset berhasil diperbarui.');
-    } else {
-        return redirect()->route('usedasset.index')
-            ->with('error', 'Used asset tidak ditemukan.');
     }
-}
 
     public function destroy($id)
     {
@@ -182,6 +183,28 @@ class UsedAssetController extends Controller
         } else {
             return redirect()->route('usedasset.index')
                 ->with('error', 'Used asset tidak ditemukan.');
+        }
+    }
+
+    public function returnAsset($id)
+    {
+        $usedAsset = UsedAsset::find($id);
+
+        if ($usedAsset) {
+            $usedAsset->return_date = Carbon::now();
+            $usedAsset->save();
+
+            $mAsset = Asset::find($usedAsset->asset_id);
+            if ($mAsset) {
+                $mAsset->is_available = 1;
+                $mAsset->save();
+            }
+
+            // return $usedAsset->return_date;
+
+            return redirect()->route('usedasset.index')->with('success', 'Asset returned successfully.');
+        } else {
+            return redirect()->route('usedasset.index')->with('error', 'Used asset not found.');
         }
     }
 

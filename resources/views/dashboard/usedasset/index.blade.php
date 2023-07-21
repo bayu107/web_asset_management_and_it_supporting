@@ -32,7 +32,7 @@
             @foreach ($usedAssets as $index => $usedAsset)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $usedAsset->id }}</td>
+                    <td>000{{ $usedAsset->id }}</td>
                     <td>{{ $usedAsset->asset->asset_name }}</td>
                     <td>{{ $usedAsset->asset->category->category_name_asset}}</td>
                     <td>{{ $usedAsset->usedBy ? $usedAsset->usedBy->user_name : 'Tidak Ada' }}</td>

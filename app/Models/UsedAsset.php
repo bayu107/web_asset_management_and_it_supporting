@@ -31,7 +31,7 @@ class UsedAsset extends Model
         if ($this->timestamps && ! $exists) {
             $time = $this->freshTimestamp();
 
-            $this->setAttribute('return_date', null);
+            // $this->setAttribute('return_date', $time);
         }
 
         return $this;

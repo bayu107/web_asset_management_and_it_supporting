@@ -214,7 +214,8 @@ class AssetController extends Controller
             UsedAsset::create([
                 'asset_id' => $assetid,
                 'used_by' => $user->id,
-                'use_start_date' => Carbon::now()
+                'use_start_date' => Carbon::now(),
+                // 'return_date' => null
             ]);
 
             // return $id;

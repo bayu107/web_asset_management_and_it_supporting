@@ -25,16 +25,22 @@
                         
                         <div class="form-group">
                             <label for="acc_by">Acc By:</label>
-                            <input type="text" class="form-control" id="acc_by" name="acc_by" value="{{ $usedAsset->acc_by }}">
+                            <select class="form-control" id="acc_by" name="acc_by">
+                                <option value="">Pilih Acc By</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}"{{ $user->id == $usedAsset->acc_by ? ' selected' : '' }}>{{ $user->user_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <form method="POST" action="{{ route('usedasset.return', $usedAsset->id) }}">
+                            @method('PUT')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Pengembalian Asset</button>
+                        </form>
                     </form>
-                    <form method="POST" action="{{ route('usedasset.return', $usedAsset->id) }}">
-                        @method('PUT')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Pengembalian Asset</button>
-                    </form>
+                    
                     
                 </div>
             </div>

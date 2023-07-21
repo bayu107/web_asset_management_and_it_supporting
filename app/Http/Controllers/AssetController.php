@@ -11,7 +11,7 @@ class AssetController extends Controller
 {
     public function index()
     {
-        $assets = Asset::all();
+        $assets = Asset::with('category')->get();
 
         return response()->json([
             'status' => 'succes',

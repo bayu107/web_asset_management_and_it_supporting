@@ -14,8 +14,6 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <a href="{{ route('usedasset.create') }}" class="btn btn-primary mb-3">Tambah Used Asset</a>
-
     <table class="table">
         <thead>
             <tr>
@@ -44,11 +42,6 @@
                     <td>
                         <a href="{{ route('usedasset.show', $usedAsset->id) }}" class="btn btn-info">Lihat</a>
                         <a href="{{ route('usedasset.edit', $usedAsset->id) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('usedasset.destroy', $usedAsset->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')">Hapus</button>
-                        </form>
                     </td>
                 </tr>
             @endforeach

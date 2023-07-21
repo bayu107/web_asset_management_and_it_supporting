@@ -13,14 +13,12 @@ class DashboardController extends Controller
     public function index()
     {
         $user = session('user');
-        $user_level = $user->user_level;
-        
-        return view('dashboard', compact('user_level'));
-        // if($user ==  null) {
-        //     return "Anda blum Login";
-        // } else {
-        //     return view('dashboard', compact('user_level'));
-        // }
+
+        if($user->user_level == 1){
+            return view('userdashboard');
+        }else{
+            return view('dashboard');
+        }
     }
 }
 

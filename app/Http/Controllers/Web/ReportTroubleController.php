@@ -244,4 +244,119 @@ class ReportTroubleController extends Controller
         return redirect()->route('report.index')->with('success', 'Laporan berhasil dihapus.');
     }
 
+    // WEB USER
+    public function indexuser(Request $request)
+    {
+        $perPage = 10;
+        $search = $request->input('search');
+
+        $user = session('user');
+
+        // if($user->user_level == 1){
+        //     return view('userdashboard');
+        // }else{
+        //     return view('dashboard');
+        // }
+        // return $user;
+        
+        $reports = ReportTrouble::with(['report', 'reporter', 'handler'])
+            ->where('report_by', $user->id)
+            ->when($search, function ($query, $search) {
+                $query->where('report_detail', 'like', '%' . $search . '%');
+            })
+            ->orderByDesc('id')
+            ->paginate($perPage);
+        
+        return view('dashboard.reportuser.index', compact('reports'));
+        // return $reports;
+    }
+
+    public function createuser()
+    {
+        $categories = MCategoryReport::all();
+        $users = User::all();
+        return view('dashboard.reportuser.create', compact('categories', 'users'));
+        // return $categories;
+    }
+
+    public function storeuser(Request $request)
+    {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'category_report_id' => 'required|integer',
+            'report_detail' => 'required|string',
+            'report_pict' => 'nullable|image',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Simpan file ke direktori storage jika ada foto yang dikirim
+        if ($request->hasFile('report_pict')) {
+            $path = $request->file('report_pict')->store('public/report_picts');
+            $report_pict = Storage::url($path);
+        } else {
+            $report_pict = '';
+        }
+
+        $reporter = session('user');
+
+        // Buat record baru di database
+        $report = new ReportTrouble;
+        $report->category_report_id = $request->input('category_report_id');
+        $report->report_detail = $request->input('report_detail');
+        $report->report_pict = $report_pict;
+        $report->report_by = $reporter->id;
+
+        $report->save();
+
+        return redirect()->route('reportuser.index')->with('success', 'Laporan berhasil ditambahkan.');
+    }
+
+    public function edituser($id)
+    {
+        $report = ReportTrouble::findOrFail($id);
+        $categories = MCategoryReport::all();
+        $users = User::all();
+
+        return view('dashboard.reportuser.edit', compact('report', 'categories', 'users'));
+    }   
+
+    public function updateuser(Request $request, $id)
+    {
+        $report = ReportTrouble::findOrFail($id);
+
+        // Validasi input dari form
+        $validator = Validator::make($request->all(), [
+            'category_report_id' => 'integer',
+            'report_detail' => 'string',
+            'report_pict' => 'nullable|image',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Simpan file ke direktori storage jika ada foto yang dikirim
+        if ($request->hasFile('report_pict')) {
+            // Hapus gambar lama jika ada
+            Storage::delete(str_replace('/storage', 'public', $report->report_pict));
+
+            // Simpan gambar baru ke direktori storage
+            $path = $request->file('report_pict')->store('public/report_picts');
+            $report->report_pict = Storage::url($path);
+        }
+
+        // Perbarui report dengan data dari input form hanya jika ada perubahan
+        $report->fill(array_filter($request->only([
+            'category_report_id',
+            'report_detail',
+        ])));
+
+        $report->save();
+
+        return redirect()->route('reportuser.show', $id)->with('success', 'Laporan berhasil diperbarui.');
+    }
+
 }

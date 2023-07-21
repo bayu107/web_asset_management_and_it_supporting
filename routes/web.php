@@ -81,6 +81,17 @@ Route::get('/reports/{report}/edit', [ReportTroubleController::class, 'edit'])->
 Route::put('/reports/{report}', [ReportTroubleController::class, 'update'])->name('report.update');
 Route::delete('/reports/{report}', [ReportTroubleController::class, 'destroy'])->name('report.destroy');
 
-// Route::get('/reports/{report}/edit', [ReportTroubleController::class, 'edit'])
-//     ->name('report.edit')
-//     ->middleware('auth');
+// UNTUK USER
+Route::get('/reportuser', [ReportTroubleController::class, 'indexuser'])->name('reportuser.index');
+Route::get('/reportuser/create', [ReportTroubleController::class, 'createuser'])->name('reportuser.create');
+Route::post('/reportuser', [ReportTroubleController::class, 'storeuser'])->name('reportuser.store');
+Route::get('/reportuser/{report}/edit', [ReportTroubleController::class, 'edituser'])->name('reportuser.edit');
+Route::put('/reports/{report}', [ReportTroubleController::class, 'updateuser'])->name('reportuser.update');
+
+Route::get('/assetuser', [AssetController::class, 'indexuser'])->name('assetuser.index');
+// Route::get('/assetuser/create', [AssetController::class, 'create'])->name('asset.create');
+// Route::post('/assetuser', [AssetController::class, 'store'])->name('asset.store');
+Route::get('/assetuser/{id}', [AssetController::class, 'show'])->name('assetuser.show');
+// Route::get('/assetuser/{id}/edit', [AssetController::class, 'edit'])->name('asset.edit');
+// Route::put('/assetuser/{id}', [AssetController::class, 'update'])->name('asset.update');
+// Route::delete('/assetuser/{id}', [AssetController::class, 'destroy'])->name('asset.destroy');

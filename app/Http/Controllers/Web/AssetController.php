@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\UsedAsset;
 use Illuminate\Http\Request;
 use App\Models\MCategoryAsset;
 use App\Http\Controllers\Controller;
@@ -47,6 +49,7 @@ class AssetController extends Controller
 
         return view('dashboard.asset.create', compact('categories', 'users'));
     }
+
 
 
     // public function create()
@@ -173,5 +176,53 @@ class AssetController extends Controller
         $asset->delete();
 
         return redirect()->route('asset.index')->with('success', 'Aset berhasil dihapus.');
+    }
+
+     //UNTUK WEB USER
+     public function indexuser()
+     {
+         $user = session('user');
+ 
+         $assets = Asset::all();
+         // $usedAsset = UsedAsset::all()->where('used_by', $user->id);
+         $usedAsset = UsedAsset::with(['accBy', 'asset','usedBy'])->where('used_by', $user->id)->get();
+         // return $usedAssets;
+ 
+ 
+         return view('dashboard.assetuser.index', compact('assets', 'usedAsset'));
+         // {{ $assets->where('id', '$asset->id')->value('asset_name') }}
+ 
+         // $user = collect($user)->forgot('posts')->all();
+         // return $assets->where('id', 1);
+     }
+
+     public function createuser()
+     {
+        $user = session('user');
+
+        $assets = Asset::whereRaw('is_available = 1')->get();
+        $categories = MCategoryAsset::all();
+ 
+        return view('dashboard.assetuser.create', compact('assets', 'categories', 'user'));
+     }
+
+     public function addusedasset($assetid)
+    {
+        {
+            $user = session('user');
+
+            UsedAsset::create([
+                'asset_id' => $assetid,
+                'used_by' => $user->id,
+                'use_start_date' => Carbon::now()
+            ]);
+
+            // return $id;
+            $assets = Asset::all();
+            $usedAsset = UsedAsset::with(['accBy', 'asset','usedBy'])->where('used_by', $user->id)->get();
+            // return view('dashboard.assetuser.index', compact('assets', 'usedAsset'));
+            return redirect()->route('assetuser.index');
+        }
+    
     }
 }

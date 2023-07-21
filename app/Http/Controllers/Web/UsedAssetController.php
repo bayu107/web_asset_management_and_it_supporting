@@ -197,6 +197,7 @@ class UsedAssetController extends Controller
             $mAsset = Asset::find($usedAsset->asset_id);
             if ($mAsset) {
                 $mAsset->is_available = 1;
+                $mAsset->used_by = null;
                 $mAsset->save();
             }
 

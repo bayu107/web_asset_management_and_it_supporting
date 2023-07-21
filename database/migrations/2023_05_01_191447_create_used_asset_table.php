@@ -15,7 +15,7 @@ return new class extends Migration
             $table->boolean('is_acc')->default(false);
             $table->unsignedBigInteger('acc_by')->nullable();
             $table->date('use_start_date');
-            $table->timestamps();
+            $table->date('return_date')->nullable();
 
             $table->foreign('used_by')->references('id')->on('users');
             $table->foreign('asset_id')->references('id')->on('m_asset');

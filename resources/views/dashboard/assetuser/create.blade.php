@@ -1,65 +1,39 @@
 <!-- resources/views/asset/create.blade.php -->
 
-@extends('dashboard')
+@extends('userdashboard')
 
 @section('content')
-    <h1>Tambah Asset</h1>
+    <h1>Daftar Aset</h1>
 
-    <form action="{{ route('asset.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama Aset</th>
+                <th>Detail Aset</th>
+                <th>Gambar Aset</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($assets as $index => $asset)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $asset->asset_name }}</td>
+                    <td>{{ $asset->asset_detail }}</td>
+                    <td>
+                        @if ($asset->asset_pict)
+                            <img src="{{ asset($asset->asset_pict) }}" alt="Asset Pict" style="max-width: 100px">
+                        @else
+                            Tidak ada Gambar
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('assetuser.addusedasset', $asset->id) }}" class="btn btn-sm btn-info">Ajukan Peminjaman</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-        <div class="form-group">
-            <label for="category_id">Kategori Aset:</label>
-            <select name="category_id" id="category_id" class="form-control">
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->category_name_asset }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="asset_name">Nama Aset:</label>
-            <input type="text" name="asset_name" id="asset_name" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="asset_detail">Detail Aset:</label>
-            <textarea name="asset_detail" id="asset_detail" class="form-control"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="used_by">Digunakan Oleh:</label>
-            <select name="used_by" id="used_by" class="form-control">
-                <option value="">Tidak Digunakan</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->user_name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="rent_by">Disewakan Oleh:</label>
-            <select name="rent_by" id="rent_by" class="form-control">
-                <option value="">Tidak Disewakan</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->user_name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="is_available">Tersedia:</label>
-            <select name="is_available" id="is_available" class="form-control">
-                <option value="1">Ya</option>
-                <option value="0">Tidak</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="asset_pict">Gambar Aset:</label>
-            <input type="file" name="asset_pict" id="asset_pict" class="form-control-file">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
 @endsection

@@ -20,6 +20,8 @@ class UsedAsset extends Model
         'return_date'
     ];
 
+    public $incrementing = false;
+
     protected $casts = [
         'is_acc' => 'boolean',
     ];
@@ -29,11 +31,14 @@ class UsedAsset extends Model
         if ($this->timestamps && ! $exists) {
             $time = $this->freshTimestamp();
 
-            $this->setAttribute('return_date', $time);
-            $this->setAttribute('updated_at', null); 
+            $this->setAttribute('return_date', null);
         }
 
         return $this;
+    }
+
+    public function id() : Attribute {
+        return $table->increments('id')->start_from(12200);
     }
 
 

@@ -98,11 +98,12 @@ class UsedAssetController extends Controller
             ], 200);
         }
 
+
         $data = $usedAssets->map(function ($usedAsset) {
             $assetName = $usedAsset->asset ? $usedAsset->asset->asset_name : null;
             return [
                 // 'data' => $usedAsset,
-                'id' => $usedAsset->id,
+                'id' => sprintf('%04d', $usedAsset->id),
                 'acc_by' => $usedAsset->accBy ? $usedAsset->accBy->user_name : 0,
                 // 'asset' => $usedAsset,
                 'is_acc' => $usedAsset->is_acc,

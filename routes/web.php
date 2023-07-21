@@ -89,9 +89,10 @@ Route::get('/reportuser/{report}/edit', [ReportTroubleController::class, 'editus
 Route::put('/reports/{report}', [ReportTroubleController::class, 'updateuser'])->name('reportuser.update');
 
 Route::get('/assetuser', [AssetController::class, 'indexuser'])->name('assetuser.index');
-// Route::get('/assetuser/create', [AssetController::class, 'create'])->name('asset.create');
+Route::get('/assetuser/create', [AssetController::class, 'createuser'])->name('assetuser.create');
 // Route::post('/assetuser', [AssetController::class, 'store'])->name('asset.store');
 Route::get('/assetuser/{id}', [AssetController::class, 'show'])->name('assetuser.show');
+Route::get('/assetuser/usedasset/{id}', [AssetController::class, 'addusedasset'])->name('assetuser.addusedasset');
 // Route::get('/assetuser/{id}/edit', [AssetController::class, 'edit'])->name('asset.edit');
 // Route::put('/assetuser/{id}', [AssetController::class, 'update'])->name('asset.update');
 // Route::delete('/assetuser/{id}', [AssetController::class, 'destroy'])->name('asset.destroy');

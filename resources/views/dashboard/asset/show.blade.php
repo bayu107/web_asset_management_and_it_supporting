@@ -34,16 +34,6 @@
             </td>
         </tr>
         <tr>
-            <th>Disewakan Oleh:</th>
-            <td>
-                @if ($asset->rentBy)
-                    {{ $asset->rentBy->user_name }}
-                @else
-                    Not Rented
-                @endif
-            </td>
-        </tr>
-        <tr>
             <th>Tersedia:</th>
             <td>{{ $asset->is_available ? 'Ya' : 'Tidak' }}</td>
         </tr>

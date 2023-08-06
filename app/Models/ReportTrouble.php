@@ -40,18 +40,18 @@ class ReportTrouble extends Model
         return $this->belongsTo(User::class, 'handle_by');
     }
 
-    protected function report_pict(): Attribute
-    {
-        // if($image == ''){
-        //     return '';
-        // }else{
-        //     return Attribute::make(
-        //         get: fn ($image) => asset('/storage/candidate/' . $image),
-        //     );
-        // }
-        return Attribute::make(
-            get: fn ($report_pict) => asset('/storage/' . $report_pict),
-        );
-    }
+    // protected function report_pict(): Attribute
+    // {
+    //     // if($image == ''){
+    //     //     return '';
+    //     // }else{
+    //     //     return Attribute::make(
+    //     //         get: fn ($image) => asset('/storage/candidate/' . $image),
+    //     //     );
+    //     // }
+    //     return Attribute::make(
+    //         get: fn ($report_pict) => asset('/storage/' . $report_pict),
+    //     );
+    // }
 
 }

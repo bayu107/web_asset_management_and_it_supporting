@@ -1,7 +1,7 @@
 <!-- resources/views/m_category_assets/create.blade.php -->
 
 @extends('dashboard')
-@section('title', 'Create Category Asset')
+@section('title', 'Tambah Kategori Asset')
 
 @section('content')
     
@@ -18,9 +18,9 @@
     <form action="{{ route('m_category_assets.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="category_name_asset">Category Name:</label>
+            <label for="category_name_asset">Nama Kategori:</label>
             <input type="text" name="category_name_asset" id="category_name_asset" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
     </form>
 @endsection

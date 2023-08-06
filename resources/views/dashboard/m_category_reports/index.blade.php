@@ -1,7 +1,7 @@
 <!-- resources/views/m_category_reports/index.blade.php -->
 
 @extends('dashboard')
-@section('title', 'Category Report')
+@section('title', 'Daftar Kategori Laporan')
 
 @section('content')
 <div class="container">
@@ -14,15 +14,15 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     
-    <a href="{{ route('m_category_reports.create') }}" class="btn btn-primary mb-3">Create Category Report</a>
+    <a href="{{ route('m_category_reports.create') }}" class="btn btn-primary mb-3">Tambah Kategori Laporan</a>
     
     <table class="table">
         <thead>
             <tr>
                 <th>No.</th>
                 {{-- <th>ID</th> --}}
-                <th>Category Name</th>
-                <th>Actions</th>
+                <th>Nama Kategori</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

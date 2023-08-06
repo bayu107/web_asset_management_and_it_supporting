@@ -51,42 +51,42 @@
                             <a href="{{ route('dashboard.users.index') }}"
                                 class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('report.index') }}"
-                                class="nav-link {{ Request::is('report*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file-alt"></i>
-                                <p>Reports</p>
+                                <p>Daftar User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('m_category_reports.index') }}"
                                 class="nav-link {{ Request::is('m_category_reports*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>Category Reports</p>
+                                <p>Daftar Kategori Laporan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('asset.index') }}"
-                                class="nav-link {{ Request::is('asset*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-cube"></i>
-                                <p>Assets</p>
+                            <a href="{{ route('report.index') }}"
+                                class="nav-link {{ Request::is('report*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>Daftar Laporan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('m_category_assets.index') }}"
                                 class="nav-link {{ Request::is('m_category_assets*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>Category Asset</p>
+                                <p>Daftar Kategori Asset</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('asset.index') }}"
+                                class="nav-link {{ Request::is('asset*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-cube"></i>
+                                <p>Daftar Asset</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('usedasset.index') }}"
                                 class="nav-link {{ Request::is('usedasset*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>Used Asset</p>
+                                <p>Daftar Pemakaian Asset</p>
                             </a>
                         </li>
                     </ul>

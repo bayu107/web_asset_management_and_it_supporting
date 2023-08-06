@@ -1,7 +1,7 @@
 <!-- resources/views/m_category_assets/index.blade.php -->
 
 @extends('dashboard')
-@section('title', 'Category Asset')
+@section('title', 'Daftar Kategori Asset')
 
 @section('content')
 <div class="container">
@@ -14,14 +14,14 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     
-    <a href="{{ route('m_category_assets.create') }}" class="btn btn-primary mb-3">Create Category Asset</a>
+    <a href="{{ route('m_category_assets.create') }}" class="btn btn-primary mb-3">Tambah Kategori Asset</a>
     
     <table class="table">
         <thead>
             <tr>
                 <th>No.</th>
                 {{-- <th>ID</th> --}}
-                <th>Category Name</th>
+                <th>Nama Kategori</th>
                 <th>Actions</th>
             </tr>
         </thead>

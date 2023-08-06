@@ -1,13 +1,13 @@
 @extends('dashboard')
-@section('title', 'Users')
+@section('title', 'Daftar User')
 
 @section('content')
 <div class="container">
-    <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary mb-3">Add User</a>
+    <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary mb-3">Tambah User</a>
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Users</h3>
+            <!-- <h3 class="card-title">Daftar User</h3> -->
             <div class="card-tools">
                 <form action="{{ route('dashboard.users.index') }}" method="GET" class="form-inline">
                     <div class="input-group">

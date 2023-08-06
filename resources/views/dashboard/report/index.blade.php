@@ -1,9 +1,9 @@
 @extends('dashboard')
-@section('title', 'Report Trouble')
+@section('title', 'Daftar Laporan')
 
 @section('content')
 <div class="container">
-    {{-- <a href="{{ route('report.create') }}" class="btn btn-primary mb-3">Create Report</a> --}}
+    {{-- <a href="{{ route('report.create') }}" class="btn btn-primary mb-3">Tambah Laporan</a> --}}
 
     @if (session('success'))
         <div class="alert alert-success">

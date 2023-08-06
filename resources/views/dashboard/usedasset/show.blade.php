@@ -1,7 +1,7 @@
 <!-- resources/views/usedasset/show.blade.php -->
 
 @extends('dashboard')
-@section('title', 'Detail Used Asset')
+@section('title', 'Detail Pemakaian Asset')
 
 @section('content')
     <div class="container">

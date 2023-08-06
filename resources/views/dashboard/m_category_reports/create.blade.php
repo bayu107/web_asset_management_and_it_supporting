@@ -2,7 +2,7 @@
 
 @extends('dashboard')
 
-@section('title', 'Create Category Report')
+@section('title', 'Tambah Kategori Laporan')
 
 @section('content')
 <div class="container">    
@@ -19,10 +19,10 @@
     <form action="{{ route('m_category_reports.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="category_name">Category Name:</label>
+            <label for="category_name">Nama Kategori:</label>
             <input type="text" name="category_name" id="category_name" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
     </form>
 </div>
 @endsection

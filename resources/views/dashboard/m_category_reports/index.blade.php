@@ -14,7 +14,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     
-    <a href="{{ route('m_category_reports.create') }}" class="btn btn-primary mb-3">Create MCategoryReport</a>
+    <a href="{{ route('m_category_reports.create') }}" class="btn btn-primary mb-3">Create Category Report</a>
     
     <table class="table">
         <thead>

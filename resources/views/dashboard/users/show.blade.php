@@ -14,7 +14,7 @@
                     <h5 class="card-title">User Information</h5>
                     <p class="card-text"><strong>Name:</strong> {{ $user->user_name }}</p>
                     <p class="card-text"><strong>Email:</strong> {{ $user->user_email }}</p>
-                    <p class="card-text"><strong>Level:</strong> {{ $user->user_level }}</p>
+                    <p class="card-text"><strong>Level:</strong> {{ $user->user_level == 1 ? 'Pengguna' : 'Admin' }}</p>
                 </div>
             </div>
         </div>

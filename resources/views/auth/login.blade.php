@@ -5,7 +5,7 @@
 <div class="login-page" >
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('#') }}"><b>Register</b></a>
+            <a href="{{ url('#') }}"><b>Login</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

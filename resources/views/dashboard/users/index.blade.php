@@ -34,7 +34,7 @@
                         <tr>
                             <td>{{ $user->user_name }}</td>
                             <td>{{ $user->user_email }}</td>
-                            <td>{{ $user->user_level }}</td>
+                            <td>{{ $user->user_level == 1 ? 'Pengguna' : 'Admin' }}</td>
                             <td>
                                 <a href="{{ route('dashboard.users.show', $user) }}" class="btn btn-primary">View</a>
                                 <a href="{{ route('dashboard.users.edit', $user) }}" class="btn btn-warning">Edit</a>
